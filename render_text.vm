@@ -1,0 +1,70 @@
+## Velocity template for text output
+
+Group: $group_name
+Service: $service_address
+#set ($maps=[])
+#set ($multimaps=[])
+#set ($lists=[])
+#set ($sets=[])
+#set ($queues=[])
+#set ($locks=[])
+#foreach ($entry in $instances.entrySet() )
+  #if( $entry.value.getType() == "MAP" )
+    #set ($discard=$maps.add($entry.key))
+  #elseif ($entry.value.getType() == "SET" )
+    #set ($discard=$sets.add($entry.key))
+  #elseif ($entry.value.getType() == "QUEUE" )
+    #set ($discard=$queues.add($entry.key))
+  #elseif ($entry.value.getType() == "LOCK" )
+    #set ($discard=$locks.add($entry.key))
+  #elseif ($entry.value.getType() == "MULTIMAP" )
+    #set ($discard=$multimaps.add($entry.key))
+  #elseif ($entry.value.getType() == "LIST" )
+    #set ($discard=$lists.add($entry.key))
+  #end
+#end
+
+MAPS
+====
+
+#foreach ($entry in $maps)
+* $entry
+#end
+
+MULTIMAPS
+=========
+
+#foreach ($entry in $multimaps)
+* $entry
+#end
+
+SETS
+====
+
+#foreach ($entry in $sets)
+* $entry
+#end
+
+LISTS
+=====
+
+#foreach ($entry in $lists)
+* $entry
+#end
+
+QUEUES
+======
+
+#foreach ($entry in $queues)
+* $entry
+#end
+
+#if ($include_locks)
+LOCKS
+=====
+
+#foreach ($entry in $locks)
+* $entry
+#end
+#end
+
