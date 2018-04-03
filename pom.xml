@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.dataone</groupId>
     <artifactId>admin_tool_hazel_structs</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.1.0</version>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -28,7 +28,13 @@
             <groupId>com.hazelcast</groupId>
             <artifactId>hazelcast-client</artifactId>
             <version>${hazelcast.version}</version>
-        </dependency>        
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.3.0-alpha4</version>
+        </dependency>
         <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
@@ -46,12 +52,6 @@
             <artifactId>jcommander</artifactId>
             <version>1.58</version>
         </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.8.0</version>
-            <scope>compile</scope>
-        </dependency>        
         <!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->
         <dependency>
             <groupId>com.opencsv</groupId>
@@ -61,18 +61,24 @@
         <dependency>
             <groupId>info.picocli</groupId>
             <artifactId>picocli</artifactId>
-            <version>1.0.1</version>
-        </dependency>
-        <dependency>
-            <!-- https://logback.qos.ch/manual/configuration.html -->
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.0.13</version>
+            <version>3.0.0-alpha-3</version>
         </dependency>
         <dependency>
             <groupId>com.timgroup</groupId>
             <artifactId>java-statsd-client</artifactId>
             <version>3.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
+            <version>1.7</version>
+            <type>jar</type>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.velocity/velocity-tools -->
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-tools</artifactId>
+            <version>2.0</version>
         </dependency>
     </dependencies>
     <build>

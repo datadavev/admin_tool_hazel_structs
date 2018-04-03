@@ -1,62 +1,52 @@
 ## Velocity template for text output
 
+Generated: $date.get('yyyy-M-d H:m:s')
 Group: $group_name
 Service: $service_address
-#set ($maps=[])
-#set ($multimaps=[])
-#set ($lists=[])
-#set ($sets=[])
-#set ($queues=[])
-#set ($locks=[])
-#foreach ($entry in $instances.entrySet() )
-  #if( $entry.value.getType() == "MAP" )
-    #set ($discard=$maps.add($entry.key))
-  #elseif ($entry.value.getType() == "SET" )
-    #set ($discard=$sets.add($entry.key))
-  #elseif ($entry.value.getType() == "QUEUE" )
-    #set ($discard=$queues.add($entry.key))
-  #elseif ($entry.value.getType() == "LOCK" )
-    #set ($discard=$locks.add($entry.key))
-  #elseif ($entry.value.getType() == "MULTIMAP" )
-    #set ($discard=$multimaps.add($entry.key))
-  #elseif ($entry.value.getType() == "LIST" )
-    #set ($discard=$lists.add($entry.key))
-  #end
-#end
 
 MAPS
 ====
 
 #foreach ($entry in $maps)
-* $entry
+* $entry.getId()
+  name: $entry.getName()
+  size: $entry.getSize()
 #end
 
 MULTIMAPS
 =========
 
 #foreach ($entry in $multimaps)
-* $entry
+* ID:   $entry.getId()
+  name: $entry.getName()
+  size: $entry.getSize()
 #end
 
 SETS
 ====
 
 #foreach ($entry in $sets)
-* $entry
+* ID:   $entry.getId()
+  name: $entry.getName()
+  size: $entry.getSize()
 #end
 
 LISTS
 =====
 
 #foreach ($entry in $lists)
-* $entry
+* ID:   $entry.getId()
+  name: $entry.getName()
+  size: $entry.getSize()
 #end
 
 QUEUES
 ======
 
 #foreach ($entry in $queues)
-* $entry
+* ID:   $entry.getId()
+  name: $entry.getName()
+  size: $entry.getSize()
 #end
 
 #if ($include_locks)
@@ -64,7 +54,8 @@ LOCKS
 =====
 
 #foreach ($entry in $locks)
-* $entry
+* ID:   $entry.getId()
+  name: $entry.getName()
 #end
 #end
 
