@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true">
 
-  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+  <appender name="STDERR" class="ch.qos.logback.core.ConsoleAppender">
     <!-- encoders are assigned the type
          ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+    <target>System.err</target>
     <encoder>
       <pattern>%d{YYYY-MM-dd HH:mm:ss.SSS} %-5level %msg%n</pattern>
     </encoder>
@@ -12,11 +13,11 @@
   <logger name="com.hazelcast" 
           level="ERROR" 
           additivity="false">
-      <appender-ref ref="STDOUT" />
+      <appender-ref ref="STDERR" />
   </logger>
   
   <logger name="org.dataone.admin_tool_hazel_structs" level="INFO">
-      <appender-ref ref="STDOUT" />
+      <appender-ref ref="STDERR" />
   </logger>
   
 <!--  <root level="INFO">
