@@ -1,0 +1,38 @@
+## Velocity template for JSON output
+
+{
+  "generated":"$date.get('yyyy-M-d H:m:s')",
+  "group":"$group_name",
+  "service":"$service_address",
+  "MAPS": [
+#set($CT=0)
+    #foreach ($entry in $maps)#if($CT !=0),#end{"ID":"$entry.getId()", "name":"$entry.getName()", "size":$entry.getSize()}
+    #set($CT=$CT+1)#end
+  ],
+  "MULTIMAPS": [
+#set($CT=0)
+    #foreach ($entry in $multimaps)#if($CT !=0),#end{"ID":"$entry.getId()", "name":"$entry.getName()", "size":$entry.getSize()}
+    #set($CT=$CT+1)#end
+  ],
+  "SETS":[
+#set($CT=0)
+    #foreach ($entry in $sets)#if($CT !=0),#end{"ID":"$entry.getId()", "name":"$entry.getName()", "size":$entry.getSize()}
+    #set($CT=$CT+1)#end
+  ],
+  "LISTS":[
+#set($CT=0)
+    #foreach ($entry in $lists)#if($CT !=0),#end{"ID":"$entry.getId()", "name":"$entry.getName()", "size":$entry.getSize()}
+    #set($CT=$CT+1)#end
+  ],
+  "QUEUES":[
+#set($CT=0)
+    #foreach ($entry in $queues)#if($CT !=0),#end{"ID":"$entry.getId()", "name":"$entry.getName()", "size":$entry.getSize()}
+    #set($CT=$CT+1)#end
+  ],
+ "LOCKS":[
+#set($CT=0)
+    #foreach ($entry in $locks)#if($CT !=0),#end{"ID":"$entry.getId()", "name":"$entry.getName()"}
+    #set($CT=$CT+1)#end
+  ]
+}
+
